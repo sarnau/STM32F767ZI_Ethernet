@@ -1,0 +1,223 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="STM32F767ZI" target="8" version="2">
+  <project Name="STM32F767ZI">
+    <configuration
+      CMSIS_CORE="Yes"
+      Name="Common"
+      Placement="Flash"
+      Target="STM32F767ZI"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M7"
+      arm_fpu_type="FPv5-D16"
+      arm_linker_heap_size="32768"
+      arm_linker_jtag_pad_pre_dr="1"
+      arm_linker_jtag_pad_pre_ir="5"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="256"
+      arm_simulator_memory_simulation_filename="$(TargetsDir)/STM32/STM32SimulatorMemory$(HostDLL)"
+      arm_simulator_memory_simulation_parameter="STM32F767ZI;0x200000;0x80000"
+      arm_target_loader_applicable_loaders="Flash"
+      arm_target_loader_default_loader="Flash"
+      arm_target_trace_interface_type="None"
+      c_preprocessor_definitions="USE_HAL_DRIVER;STM32F767xx;LWIP_DEBUG"
+      c_user_include_directories="$(ProjectDir)/../Inc;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/include;$(ProjectDir)/../Middlewares/Third_Party/LwIP/system;$(ProjectDir)/../Drivers/STM32F7xx_HAL_Driver/Inc;$(ProjectDir)/../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;$(ProjectDir)/../Middlewares/Third_Party/FreeRTOS/Source/include;$(ProjectDir)/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;$(ProjectDir)/../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/include/netif/ppp;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/apps/httpd;$(ProjectDir)/../Drivers/CMSIS/Device/ST/STM32F7xx/Include;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/include/lwip;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/include/lwip/apps;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/include/lwip/priv;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/include/lwip/prot;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/include/netif;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/include/posix;$(ProjectDir)/../Middlewares/Third_Party/LwIP/src/include/posix/sys;$(ProjectDir)/../Middlewares/Third_Party/LwIP/system/arch;$(ProjectDir)/../Drivers/CMSIS/Include;$(ProjectDir)/../webpages"
+      debug_register_definition_file="$(TargetsDir)/STM32/STM32F7x7_Peripherals.xml"
+      gcc_c_language_standard="gnu11"
+      gcc_cplusplus_language_standard="gnu++11"
+      linker_memory_map_file="$(TargetsDir)/STM32/STM32F767ZI_MemoryMap.xml"
+      linker_section_placement_file="$(StudioDir)/targets/Cortex_M/flash_placement.xml"
+      macros="DeviceVectorsFile=STM32F767xx.vec"
+      project_directory=""
+      project_type="Executable"
+      property_groups_file_path="$(TargetsDir)/STM32/propertyGroups.xml"
+      target_get_partname_script="GetPartName()"
+      target_match_partname_script="MatchPartName(&quot;$(Target)&quot;)"
+      target_script_file="$(TargetsDir)/STM32/STM32_Target.js"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <configuration
+      Name="Flash"
+      arm_target_flash_loader_file_path="$(LOADER:$(TargetsDir)/STM32/Release/STM32F2xx_Loader_rpc.elf)"
+      arm_target_loader_can_erase_all="Yes"
+      arm_target_loader_can_lock_all="No"
+      arm_target_loader_can_lock_range="No"
+      arm_target_loader_can_unlock_all="No"
+      arm_target_loader_can_unlock_range="No"
+      target_reset_script="FLASHReset()" />
+    <configuration Name="RAM" target_reset_script="Reset()" />
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="$(StudioDir)/source/thumb_crt0.s" />
+      <file file_name="$(TargetsDir)/STM32/STM32_Startup.s" />
+      <file file_name="$(TargetsDir)/STM32/$(DeviceVectorsFile)" />
+    </folder>
+    <folder Name="Application">
+      <folder Name="EWARM">
+        <file file_name="./startup_stm32f767xx.s">
+          <configuration Name="Common" build_exclude_from_build="Yes" />
+        </file>
+      </folder>
+      <folder Name="User">
+        <file file_name="./../Src/main.c" />
+        <file file_name="./../Src/gpio.c" />
+        <file file_name="./../Src/adc.c" />
+        <file file_name="./../Src/freertos.c" />
+        <file file_name="./../Src/lwip.c" />
+        <file file_name="./../Src/ethernetif.c" />
+        <file file_name="./../Src/stm32f7xx_it.c" />
+        <file file_name="./../Src/stm32f7xx_hal_msp.c" />
+        <file file_name="../Src/httpserver-netconn.c" />
+        <file file_name="../Src/temp.c" />
+        <file file_name="../Src/httpclient.c" />
+        <file file_name="../Src/JsonStreamingParser.cpp" />
+        <file file_name="../Src/httpclient-netconn.cpp" />
+      </folder>
+    </folder>
+    <folder Name="Drivers">
+      <folder Name="STM32F7xx_HAL_Driver">
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_eth.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c" />
+        <file file_name="./../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_exti.c" />
+        <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c" />
+      </folder>
+      <folder Name="CMSIS">
+        <file file_name="./../Src/system_stm32f7xx.c" />
+      </folder>
+    </folder>
+    <folder Name="Middlewares">
+      <folder Name="FreeRTOS">
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/croutine.c" />
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c" />
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/list.c" />
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/queue.c" />
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c" />
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/tasks.c" />
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/timers.c" />
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c" />
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c" />
+        <file file_name="./../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c" />
+      </folder>
+      <folder Name="LwIP">
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/auth.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/ccp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/chap_ms.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/chap-md5.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/chap-new.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/demand.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/eap.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/eui64.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/fsm.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/ipcp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/ipv6cp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/lcp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/magic.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/mppe.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/multilink.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/ppp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/pppapi.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/pppcrypt.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/pppoe.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/pppol2tp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/pppos.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/upap.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/utils.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/vj.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ethernet.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/slipif.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/lowpan6.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/netif/ppp/ecp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/apps/httpd/httpd.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/apps/httpd/fs.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/api/sockets.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/api/netdb.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/api/tcpip.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/api/err.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/api/netifapi.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/api/api_lib.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/api/api_msg.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/api/netbuf.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/memp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/sys.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/inet_chksum.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/raw.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/tcp_out.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ip.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/dns.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/init.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/mem.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/def.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/udp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/stats.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/tcp_in.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/netif.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/tcp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/pbuf.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/timeouts.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv4/autoip.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv4/igmp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv4/etharp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv4/icmp.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv4/ip4.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv4/ip4_frag.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv4/ip4_addr.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv6/ip6.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv6/icmp6.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv6/mld6.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv6/dhcp6.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv6/ethip6.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv6/nd6.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv6/inet6.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv6/ip6_addr.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/core/ipv6/ip6_frag.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/system/OS/sys_arch.c" />
+        <file file_name="./../Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.c" />
+      </folder>
+    </folder>
+  </project>
+  <configuration Name="THUMB Debug" inherited_configurations="THUMB;Debug" />
+  <configuration
+    Name="THUMB"
+    Platform="ARM"
+    arm_instruction_set="Thumb"
+    arm_library_instruction_set="Thumb"
+    c_preprocessor_definitions="__THUMB"
+    hidden="Yes" />
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="None"
+    hidden="Yes" />
+  <configuration
+    Name="THUMB Release"
+    inherited_configurations="THUMB;Release" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="None"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1"
+    hidden="Yes" />
+  <configuration Name="Common" />
+</solution>
